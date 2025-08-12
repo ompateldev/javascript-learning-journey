@@ -25,4 +25,4 @@ let someNumber = 33
 
 let stringnumber = String(someNumber)
 
-console.log( typeof( stringnumber))
+console.log( typeof(stringnumber))
