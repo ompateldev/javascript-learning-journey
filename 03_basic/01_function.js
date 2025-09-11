@@ -37,7 +37,7 @@ function calculatecartprice(v1, v2, ...num1) {
 // console.log(calculatecartprice(100, 300, 444, 555));
 
 
-const user = {
+const user = { 
     name: "om",
     price : 222,
 }
