@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+
+<body>
+
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+
+</body>
+
+
+<script>
+
+    function addlanguage(langName) {
+        const li = document.createElement('li')
+        li.innerHTML = `${langName}`;
+        li.style.background = 'black'
+        li.style.color = 'orange'
+        li.style.padding = '10px'
+        li.style.margin = '10px'
+        document.querySelector('.language').appendChild(li)
+    }
+
+    addlanguage('Pythone')
+    addlanguage('HTML')
+    addlanguage('CSS')
+
+    //edit
+
+    const secoundLang = document.querySelector('li:nth-child(3)');
+
+    console.log(secoundLang);
+    const newli = document.createElement('li');
+    newli.appendChild(document.createTextNode('Bootstrap'));
+
+    secoundLang.replaceWith(newli);
+
+    const first = document.querySelector('li:nth-child(1)');
+    first.outerHTML = "<li>TypeScript </li>"
+
+    //remove
+
+
+    const lastLangName = document.querySelector('li:nth-child(2)')
+
+    lastLangName.remove()
+
+
+</script>
+
+</html>
