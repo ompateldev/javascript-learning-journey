@@ -65,5 +65,43 @@ form.addEventListener('submit' , function(e){
 
 })
 
+```
+## project 4 
+
+``` JavaScript
+
+
+const randomNumber = parseInt(Math.random() * 100 + 10);
+
+const userInput = document.querySelector('#guessField');
+const submit = document.querySelector('#subt');
+const guessSlot = document.querySelector('.guesses');
+const lastResult = document.querySelector('.lastResult');
+const lowOrHi = document.querySelector('.lowOrHi');
+
+const p = document.createElement('p');
+
+let prevGuss = [];
+let numGuss = 1
+
+let playGame = true
+
+
+function validateGuess(guess){
+  //
+}
+
+function checkGuess(guess){
+  //
+}
+
+function displayGuess(guess){
+  //
+} 
+function displayMessages(message){
+  //
+} 
+
+
 
 ```

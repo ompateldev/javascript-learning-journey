@@ -18,3 +18,4 @@ console.log(person); // { name: "Om", age: 21 }
 
 // person = { name: "Patel" }; // ❌ Error (reassign नहीं कर सकते)
 console.log(person.age);
+
