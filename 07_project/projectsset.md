@@ -71,36 +71,101 @@ form.addEventListener('submit' , function(e){
 ``` JavaScript
 
 
-const randomNumber = parseInt(Math.random() * 100 + 10);
-
-const userInput = document.querySelector('#guessField');
+const randomNumber = Math.floor(Math.random() * 100) + 1;
 const submit = document.querySelector('#subt');
+const userInput = document.querySelector('#guessField');
 const guessSlot = document.querySelector('.guesses');
 const lastResult = document.querySelector('.lastResult');
 const lowOrHi = document.querySelector('.lowOrHi');
+const startOver = document.querySelector('.resultParas');
+
+
+let prevGuess = [];
+let numGuess = 1;
+let playGame = true;
+
 
 const p = document.createElement('p');
 
-let prevGuss = [];
-let numGuss = 1
+if(playGame){
+  submit.addEventListener("click" , function(e){
+    e.preventDefault();
 
-let playGame = true
-
-
-function validateGuess(guess){
-  //
+   const guess =  parseInt(userInput.value)
+   console.log(guess)
+   validateGuess(guess)
+  })
 }
 
-function checkGuess(guess){
-  //
+function validateGuess(guess) {
+  if (isNaN(guess)) {
+    alert("कृपया एक valid नंबर डालें");
+  } else if (guess < 1) {
+    alert("नंबर 1 से बड़ा होना चाहिए");
+  } else if (guess > 100) {
+    alert("नंबर 100 से छोटा होना चाहिए");
+  } else {
+    prevGuess.push(guess);
+    
+    if (numGuess == 11) {
+      displayGuess(guess);
+      displayMessage(`Game Over! Random Number था ${randomNumber}`);
+      endGame();
+    } else {
+      displayGuess(guess);
+      checkGuess(guess);
+    }
+  }
 }
 
-function displayGuess(guess){
-  //
-} 
-function displayMessages(message){
-  //
-} 
+
+function checkGuess(guess) {
+  if (guess === randomNumber) {
+    displayMessage("🎉 बधाई हो! आपने सही नंबर guess किया!");
+    endGame();
+  } else if (guess < randomNumber) {
+    displayMessage("📉 आपका guess बहुत low है");
+  } else if (guess > randomNumber) {
+    displayMessage("📈 आपका guess बहुत high है");
+  }
+}
+
+
+function displayGuess(guess) {
+  userInput.value = '';
+  guessSlot.innerHTML += `${guess}, `;
+  numGuess++;
+  lastResult.innerHTML = `${11 - numGuess} chances बचे हैं`;
+}
+
+function displayMessage(message) {
+  lowOrHi.innerHTML = `<h3>${message}</h3>`;
+}
+
+function endGame() {
+  userInput.value = '';
+  userInput.setAttribute('disabled', '');
+  p.classList.add('button');
+  p.innerHTML = `<h2 id="newGame">Start New Game</h2>`;
+  startOver.appendChild(p);
+  playGame = false;
+  newGame();
+}
+
+function newGame() {
+  const newGameBtn = document.querySelector('#newGame');
+  newGameBtn.addEventListener('click', function () {
+    randomNumber = Math.floor(Math.random() * 100) + 1;
+    prevGuess = [];
+    numGuess = 1;
+    guessSlot.innerHTML = '';
+    lastResult.innerHTML = `${11 - numGuess} chances बचे हैं`;
+    userInput.removeAttribute('disabled');
+    startOver.removeChild(p);
+    playGame = true;
+  });
+}
+
 
 
 
