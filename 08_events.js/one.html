@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>
+        <ul id="images">
+            <li><img id="owl" style="width: 200px; height: 200px;"
+                    src="https://images.pexels.com/photos/33827863/pexels-photo-33827863.jpeg" alt="">
+            </li>
+            <li><img style="width: 200px; height: 200px;"
+                    src="https://images.pexels.com/photos/31870844/pexels-photo-31870844.jpeg" alt=""></li>
+            <li>
+                <img style="width: 200px; height: 200px;"
+                    src="https://images.pexels.com/photos/8285057/pexels-photo-8285057.jpeg" alt="">
+            </li>
+            <li>
+                <img style="width: 200px; height: 200px;"
+                    src="https://images.pexels.com/photos/31870844/pexels-photo-31870844.jpeg" alt="">
+            </li>
+            <li>
+                <img style="width: 200px; height: 200px;"
+                    src="https://images.pexels.com/photos/33940632/pexels-photo-33940632.jpeg" alt="">
+            </li>
+
+
+
+
+        </ul>
+    </div>
+
+
+</body>
+
+<script>
+
+    // document.getElementById("owl").onclick = function(){
+    //      alert("owl alert ")
+    // }
+    // attachEvent()
+    // jQuery - on
+
+    // type , timestamp , defaultPrevented
+    // target , toElement , currentTarget
+    //srcElement , clintX , clientY
+    // screenX , screenY , alterKey
+    // ctrlKey , shiftKey 
+
+    document.getElementById("images").addEventListener("click", function () {
+        // alert("owl alert ")
+        console.log("click in to ul");
+
+    }, false)
+    document.getElementById("owl").addEventListener("click", function () {
+    console.log("click in to li");
+    }, false)
+</script>
+
+</html>
