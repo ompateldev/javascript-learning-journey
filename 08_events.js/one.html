@@ -28,9 +28,12 @@
                 <img style="width: 200px; height: 200px;"
                     src="https://images.pexels.com/photos/33940632/pexels-photo-33940632.jpeg" alt="">
             </li>
+            <li>
+                <h1>patel</h1>
+            </li>
 
 
-
+            <li><a href="" id="google">google</a></li>
 
         </ul>
     </div>
@@ -52,14 +55,36 @@
     // screenX , screenY , alterKey
     // ctrlKey , shiftKey 
 
-    document.getElementById("images").addEventListener("click", function () {
-        // alert("owl alert ")
-        console.log("click in to ul");
+    // document.getElementById("images").addEventListener("click", function () {
+    //     // alert("owl alert ")
+    //     console.log("click in to ul");
+    //     e.stopPropagation()
+
+    // }, false)
+    // document.getElementById("owl").addEventListener("click", function (e) {
+    //     console.log("click in to li");
+    // }, false)
+
+
+    document.getElementById("google").addEventListener("click", function (e) {
+        e.preventDefault()
+        e.stopPropagation()
+        console.log("google button click")
 
     }, false)
-    document.getElementById("owl").addEventListener("click", function () {
-    console.log("click in to li");
-    }, false)
+
+
+    const img = document.querySelector("#images");
+
+    img.addEventListener("click", function (e) {
+
+        if(e.target.tagName== "IMG") {
+            let removerIt = e.target.parentNode
+            removerIt.remove()
+        }
+    })
+
+
 </script>
 
 </html>
