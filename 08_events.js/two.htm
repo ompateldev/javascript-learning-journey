@@ -18,18 +18,19 @@
 
 <script>
 
-    
+
     const changeName = document.querySelector("h1")
-    const change  = function() {
+    const change = function () {
         changeName.innerHTML = "javaScript learn by hiteshchaudhry"
     }
 
-    const stopTime = setTimeout(change , 2000)
+    const stopTime = setTimeout(change, 2000)
 
-    document.querySelector("#stop").addEventListener('click' , function(){
+    document.querySelector("#stop").addEventListener('click', function () {
         clearTimeout(stopTime)
         console.log("stoped");
-        
+        alert("time out stoped")
+
     })
 
 </script>

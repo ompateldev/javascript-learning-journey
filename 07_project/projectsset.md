@@ -170,3 +170,43 @@ function newGame() {
 
 
 ```
+## project 5 
+
+``` JavaScript
+
+const randomColor = function () {
+  const hex = '0123456789ABCDEF';
+  let color = '#';
+
+  for (let i = 0; i < 6; i++) {
+    color += hex[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
+
+const start = document.querySelector('#start');
+const stop = document.querySelector('#stop');
+
+let setInteravalId;
+
+let StartChangingColor = function () {
+   if(setInteravalId == null){
+    setInteravalId = setInterval( ChangingColor , 900)
+   }
+  
+  function ChangingColor(){
+    document.body.style.backgroundColor = randomColor();
+  }
+
+};
+
+start.addEventListener('click' , StartChangingColor);
+stop.addEventListener('click' , function(){
+  clearInterval(setInteravalId)
+  setInteravalId = null;
+});
+
+
+
+
+```
