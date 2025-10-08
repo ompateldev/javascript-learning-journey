@@ -5,8 +5,10 @@
 [Click here](https://stackblitz.com/edit/dom-project-chaiaurcode?file=1-colorChanger%2Findex.html)
 
 # Solution Code
+
 ## Project 1
-``` JavaScript
+
+```JavaScript
 
 console.log("om patel")
 
@@ -43,7 +45,7 @@ button.forEach(function (button){
 
 ## Project 2
 
-``` JavaScript
+```JavaScript
 const form = document.querySelector('form')
 
 form.addEventListener('submit' , function(e){
@@ -66,9 +68,10 @@ form.addEventListener('submit' , function(e){
 })
 
 ```
-## project 4 
 
-``` JavaScript
+## project 4
+
+```JavaScript
 
 
 const randomNumber = Math.floor(Math.random() * 100) + 1;
@@ -106,7 +109,7 @@ function validateGuess(guess) {
     alert("नंबर 100 से छोटा होना चाहिए");
   } else {
     prevGuess.push(guess);
-    
+
     if (numGuess == 11) {
       displayGuess(guess);
       displayMessage(`Game Over! Random Number था ${randomNumber}`);
@@ -170,9 +173,10 @@ function newGame() {
 
 
 ```
-## project 5 
 
-``` JavaScript
+## project 5
+
+```JavaScript
 
 const randomColor = function () {
   const hex = '0123456789ABCDEF';
@@ -193,7 +197,7 @@ let StartChangingColor = function () {
    if(setInteravalId == null){
     setInteravalId = setInterval( ChangingColor , 900)
    }
-  
+
   function ChangingColor(){
     document.body.style.backgroundColor = randomColor();
   }
@@ -206,7 +210,30 @@ stop.addEventListener('click' , function(){
   setInteravalId = null;
 });
 
+```
 
+## Project 6
 
+```JavaScript
+
+const insert = document.querySelector('#insert');
+
+window.addEventListener('keydown', (e) => {
+  insert.innerHTML = `
+  <table>
+  <tr>
+    <th>key</th>
+    <th>keyCode </th>
+    <th>code</th>
+  </tr>
+  <tr>
+    <td>${e.key === '' ? 'space' : e.key}</td>
+    <td>${e.keyCode}</td>
+    <td>${e.code}</td>
+  </tr>
+
+</table>
+  `;
+});
 
 ```
