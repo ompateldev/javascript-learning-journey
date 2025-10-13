@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="font-size: 20px;  background: #706d6d; text-align: center;">
+
+    <!-- Ready State (XHR में 5 states होती हैं):
+
+    0 – UNSENT → Request create हुई, अभी भेजी नहीं।
+
+    1 – OPENED → Request open हो गई, भेजने के लिए तैयार।
+
+    2 – HEADERS_RECEIVED → Server से headers आ गए।
+
+    3 – LOADING → Response आ रहा है (partial data)।
+
+    4 – DONE → Response पूरी तरह आ गया। -->
+
+    <h1>API Request in JavaScript</h1>
+    <div class="card">
+        <div class="imge" id="hitesh_imge"></div>
+        <div class="imge" id="followers"></div>
+        <p id="aboutText">know more about hitesh</p>
+        <button class="btn" id="btn">click</button>
+    </div>
+
+
+</body>
+
+<script>
+
+    const RequestUrl = 'https://api.github.com/users/hiteshchoudhary'
+
+    const imge = document.querySelector('#hitesh_imge');
+    const followers = document.querySelector('#followers')
+    const btn = document.querySelector('#btn')
+    const aboutText = document.querySelector('#aboutText')
+
+
+    btn.addEventListener('click', function () {
+
+
+        aboutText.style.display = 'none'
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('Get', RequestUrl)
+        xhr.onreadystatechange = function () {
+            console.log('ready state is ', xhr.readyState);
+
+            if (xhr.readyState === 4) {
+                const data = JSON.parse(this.responseText)
+                console.log(data.blog)
+                followers.innerHTML = ` followers : ${data.followers}`
+                imge.innerHTML = `<img src="${data.avatar_url}" alt="Avatar" />`
+
+            }
+
+        }
+        xhr.send();
+
+    })
+</script>
+
+</html>
