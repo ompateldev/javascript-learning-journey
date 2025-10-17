@@ -52,13 +52,38 @@
 
 
     const userInput = document.querySelector("#input")
+    const container = document.querySelector(".container")
     const btn = document.querySelector("#button")
 
-    btn.addEventListener("click", function () {
+    const p = document.createElement("p")
+    container.appendChild(p)
 
-        const input = parseInt(userInput.value)
 
-    })
+    function checkNumber() {
+        const input = parseInt(userInput.value.trim())
+
+        if (isNaN(input)) {
+            p.innerHTML = `this is not a number Please enter a valid number  ${input}`
+            p.style.color = "red";
+            return;
+        }
+
+        if (input % 2 === 0) {
+            p.innerHTML = `this is even number ${input}`
+            p.style.color = "lightgreen";
+        } else {
+            p.innerHTML = `this is odd number ${input}`
+            p.style.color = "orange";
+        }
+
+        userInput.value = "";
+    }
+
+
+    btn.addEventListener("click", checkNumber
+
+
+    )
 
 </script>
 
