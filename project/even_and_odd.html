@@ -58,9 +58,9 @@
     const p = document.createElement("p")
     container.appendChild(p)
 
-
-    function checkNumber() {
+    btn.addEventListener("click", function checkNumber() {
         const input = parseInt(userInput.value.trim())
+        userInput.value = "";
 
         if (isNaN(input)) {
             p.innerHTML = `this is not a number Please enter a valid number  ${input}`
@@ -76,12 +76,8 @@
             p.style.color = "orange";
         }
 
-        userInput.value = "";
+
     }
-
-
-    btn.addEventListener("click", checkNumber
-
 
     )
 

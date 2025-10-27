@@ -21,5 +21,13 @@ CreateUser.prototype.printMe = function(){
   console.log(`username: ${this.username}, score: ${this.score}`);
 }
 
-const chai =  CreateUser("chai", 3);
-const tea =  CreateUser("tea", 5);
+const chai =  new CreateUser("chai", 3);
+const tea =  new CreateUser("tea", 5);
+
+chai.printMe();
+chai.increment();
+chai.printMe();
+
+tea.printMe();
+tea.increment();
+tea.printMe();
