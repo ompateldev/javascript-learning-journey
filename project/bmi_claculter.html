@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        background-color: #696666;
+        text-align: center;
+    }
+
+    label,
+    input {
+        margin: 10px;
+        padding: 5px;
+        font-size: 20px;
+    }
+
+    button {
+        padding: 10px;
+        background: #69d369;
+        border: 0px;
+        color: #fff;
+        font-weight: 800;
+        font-size: 15px;
+    }
+</style>
+
+<body>
+
+    <h1>BMI Calculator</h1>
+    <form id="bmiForm">
+        <label for="weight">Weight (kg):</label>
+        <input type="text" id="weight" required>
+        <br>
+        <label for="height">Height (m):</label>
+        <input type="text" id="height" step="0.01" required>
+        <br>
+        <button class="button" type="submit">Calculate BMI</button>
+    </form>
+    <h2 id="result"></h2>
+
+
+
+</body>
+
+<script>
+
+    const input1 = document.querySelector("#weight")
+    const input2 = document.querySelector("#height")
+    const button = document.querySelector(".button")
+    const result = document.querySelector("#result")
+
+
+    button.addEventListener("click", function (e) {
+
+        e.preventDefault()
+
+        const weight = parseFloat(input1.value)
+        const height = parseFloat(input2.value)
+
+
+        if (isNaN(weight) || isNaN(height)) {
+            alert("please enter valid number");
+            return
+        } else {
+
+            const bmi = weight / (height * height)
+
+            const output = result.innerText = "Your BMI is " + bmi.toFixed(2);
+
+            if (bmi < 18.5) {
+                result.innerText = "You are Underweight " + bmi.toFixed(2);
+            } else if (bmi >= 18.5 && bmi < 24.9) {
+
+                result.innerText = "You are Normal " + bmi.toFixed(2);
+
+            } else if (bmi >=25 && bmi <= 29.9) {
+                result.innerText = "You are Overweight " + bmi.toFixed(2);
+
+            } else {
+                result.innerText = "You are obese Overweight " + bmi.toFixed(2);
+
+            }
+            const weight = "";
+            const height = "";
+
+        }
+
+    })
+
+
+
+
+</script>
+
+</html>

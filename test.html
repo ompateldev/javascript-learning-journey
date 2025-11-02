@@ -1,0 +1,28 @@
+<textarea id="t" rows="6" cols="60" placeholder="Type or paste text..."></textarea>
+<div id="out"></div>
+
+<script>
+    const ta = document.getElementById("t");
+    const out = document.getElementById("out");
+
+    function analyze(text) {
+        const trimmed = text.trim();
+        const charsWithSpaces = trimmed.length;
+        const charsNoSpaces = trimmed.replace(/\s+/g, "").length;
+        const words = trimmed === "" ? 0 : trimmed.split(/\s+/).length;
+        const sentences = trimmed === "" ? 0 : trimmed.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
+        const readTime = words === 0 ? 0 : +(words / 200).toFixed(2);
+        return { words, charsWithSpaces, charsNoSpaces, sentences, readTime };
+    }
+
+    ta.addEventListener("input", () => {
+        const r = analyze(ta.value);
+        out.innerHTML = `
+    <p>Words: ${r.words}</p>
+    <p>Chars (with spaces): ${r.charsWithSpaces}</p>
+    <p>Chars (no spaces): ${r.charsNoSpaces}</p>
+    <p>Sentences: ${r.sentences}</p>
+    <p>Estimated reading time: ${r.readTime} minutes</p>
+  `;
+    });
+</script>

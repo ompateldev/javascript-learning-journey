@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+
+<body>
+    <h1>Word Counter</h1>
+
+    <textarea name="" cols="90" rows="13" id="textarea"></textarea>
+
+    <br />
+    <div class="output"></div>
+</body>
+
+
+<script>
+    const textarea = document.getElementById("textarea");
+    const output = document.querySelector(".output")
+
+
+    function wordcounter(text) {
+        const trimmed = text.trim();
+        const words = trimmed === "" ? 0 : trimmed.split(/\s+/).length;
+        const charsWithoutSpaces = trimmed.replace(/\s+/g, "").length;
+
+        const reading = (words / 200).toFixed(2);
+
+        return { words, charsWithoutSpaces, reading };
+
+    }
+    textarea.addEventListener("input", function () {
+        const result = wordcounter(textarea.value)
+
+        output.innerHTML =
+            `
+         Words: ${result.words} <br>
+            Characters (no spaces): ${result.charsWithoutSpaces} <br>
+            Reading Time: ${result.reading} minutes
+        `
+
+    })
+
+</script>
+
+</html>
