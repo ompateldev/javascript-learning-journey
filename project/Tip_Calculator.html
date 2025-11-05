@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        font-family: "Poppins", Arial, sans-serif;
+        background: linear-gradient(135deg, #a2d9ff, #e0f7fa);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+    }
+
+    h1 {
+        margin-bottom: 25px;
+        color: #0f4c75;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        gap: 18px;
+        width: 400px;
+        transition: 0.3s;
+    }
+
+    form:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+    }
+
+    label {
+        font-weight: 600;
+        color: #333;
+    }
+
+    .input-group {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        font-size: 21px;
+        padding: 16px;
+    }
+
+    input {
+        padding: 10px 12px;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+
+    input:focus {
+        border-color: #0077b6;
+        box-shadow: 0 0 4px #90e0ef;
+        outline: none;
+    }
+
+    .btn {
+        padding: 12px;
+        background: #0077b6;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 17px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background: #023e8a;
+    }
+
+    #result {
+        background: #f1faff;
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 5px;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #023e8a;
+        text-align: center;
+        font-weight: 500;
+    }
+</style>
+
+<body>
+
+    <h1>Tip Calculator</h1>
+
+    <form action="">
+        <div class="input-group">
+
+            <label for="">Bill amount</label>
+            <input id="billAmount" type="text" placeholder="Enter Number" required>
+        </div>
+
+        <div class="input-group">
+            <label for=""> Tip percentage </label>
+            <input type="text" placeholder="Tip percentage" id="tip">
+        </div>
+        <button class="btn" type="button">Calculate</button>
+
+        <h4 id="result"></h4>
+
+    </form>
+
+
+</body>
+
+<script>
+
+    const billAmount = document.getElementById("billAmount")
+    const tip = document.getElementById("tip")
+    const result = document.querySelector("#result")
+    const btn = document.querySelector(".btn")
+
+    btn.addEventListener("click", TipCalculator)
+
+
+    function TipCalculator(Number) {
+        debugger
+        n1 = parseFloat(billAmount.value)
+        n2 = parseFloat(tip.value)
+
+        if (isNaN(n1) || isNaN(n2)) {
+            alert("Enter valid positive numbers")
+            return
+        }
+
+        const tipAmount = n1 * (n2 / 100);
+
+        const totalAmout = tipAmount + n1;
+
+        result.innerHTML = `
+        Bill: ₹ ${n1} <br>
+        Tip: ₹ ${tipAmount} <br>
+        Total: ₹ ${totalAmout}
+        `
+
+        billAmount.value = "";
+        tip.value = "";
+
+        billAmount.focus();
+    }
+
+
+
+
+</script>
+
+</html>
