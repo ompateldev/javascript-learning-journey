@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+
+    <h1>Grade Calculator</h1>
+
+    <form action="">
+        <input type="text" id="score" placeholder="Enter your score">
+        <button id="Calculate">Calculate</button>
+        <p id="output"></p>
+    </form>
+
+
+
+</body>
+
+<script>
+    const button = document.getElementById('Calculate');
+    const scoreInput = document.getElementById('score');
+    const output = document.getElementById('output');
+
+
+
+    function GradeCalculator(number) {
+        let grade;
+        if (number >= 90) {
+            grade = 'A';
+        } else if (number >= 80) {
+            grade = 'B';
+        } else if (number >= 70) {
+            grade = 'C';
+        } else if (number >= 60) {
+            grade = 'D';
+        } else {
+            grade = 'F';
+        }
+        return grade;
+    }
+
+    button.addEventListener("click", function (event) {
+        event.preventDefault()
+        debugger
+        const number = parseFloat(scoreInput.value)
+
+
+        if (isNaN(number) || number < 0 || number > 100) {
+            alert("please enter valid number")
+            return
+        }
+
+
+        let grade = GradeCalculator(number);
+        scoreInput.value = "";
+
+        output.innerText = `Grade: ${grade}`;
+
+        debugger
+    })
+
+
+
+</script>
+
+
+
+</script>
+
+</html>
