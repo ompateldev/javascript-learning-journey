@@ -129,8 +129,20 @@ function hoistingFunction(a, b) {
 }
 // hosting ae concept hai jo function or variable ko upar le jata hai
 
+//iife = immediately invoked function expression
+
+(function () {
+  console.log("This is an IIFE function");
+})(); // ye function turant chal jata hai
+
+
+
+
+
+/////////////////////////  practice  ////////////////////////
+
 /////////////////////////////
-// Task 1 
+// Task 1
 function sum(...number) {
   return number.reduce((acc, curr) => acc + curr, 0);
 }
@@ -140,10 +152,9 @@ console.log(sum(1, 2, 3));
 console.log(sum(10, 20));
 console.log(sum(4, 5, 6, 7, 8));
 
-
 // Task 2 — Remove First Item, Baaki Return
 
-function user(a, b , ...add) {
+function user(a, b, ...add) {
   return console.log(`this add ${add}`);
 }
 

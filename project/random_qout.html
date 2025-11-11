@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+    }
+    #quoteDisplay {
+        margin: 20px;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+    }
+    button {
+        padding: 10px 20px;
+        margin: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    #btn{
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+    }
+
+    #btnstop{
+        background-color: #f44336;
+        color: white;
+        border: none;
+        border-radius: 5px;
+    }
+</style>
+
+<body>
+
+    Hello, this is a random quote page!
+    <h2 id="quoteDisplay"></h2>
+    <button id="btn">Generate Quote</button>
+    <button id="btnstop">Stop Quote</button>
+
+</body>
+
+
+<script>
+
+    const quoteDisplay = document.getElementById("quoteDisplay")
+    const btn = document.getElementById("btn")
+    const btnstop = document.getElementById("btnstop")
+
+    const quotes = [
+        "Success is not an accident.",
+        "Do the hard work.",
+        "Think less, act more.",
+        "Stay consistent.",
+        "Discipline beats motivation."
+    ];
+
+    let intervalId = null; // abhi ye khali hai
+
+    function start() {
+
+        if (intervalId !== null) {
+            return;
+        }
+
+        intervalId = setInterval(function () {
+
+            const randomIndex = Math.floor(Math.random() * quotes.length)
+            quoteDisplay.innerText = quotes[randomIndex]
+
+
+        }, 1000)
+    }
+
+
+    btn.addEventListener("click", function () {
+        start();
+        btn.disabled = true;
+        btnstop.disabled = false;
+
+    });
+
+    btnstop.addEventListener("click", function () {
+        clearInterval(intervalId)
+        intervalId = null;
+        btn.disabled = false;
+        btnstop.disabled = true;
+        quoteDisplay.innerText = "";
+    })
+
+
+
+</script>
+
+</html>
