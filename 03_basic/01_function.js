@@ -135,9 +135,55 @@ function hoistingFunction(a, b) {
   console.log("This is an IIFE function");
 })(); // ye function turant chal jata hai
 
+// hofs = higher order function
+// jisme ek function dusre function ko as a parameter leta hai ya fir function ko return karta hai
+//ek aesa function jo yaa to return kare function nahi to accept kare function as  parameter , ya dono
 
+// callback function
 
+function hofExample(callback) {
+  console.log("This is a higher order function");
+  callback();
+}
+function callbackFunction() {
+  console.log("This is a callback function");
+}
 
+// first class function
+// jisme function ko variable me store kar sakte hai , function ko as a parameter pass kar sakte hai , function ko return kar sakte hai
+
+const myFunction = function () {
+  console.log("This is a first class function");
+};
+
+// pure function
+// jisme function ka output sirf uske input par depend karta hai , aur function ke bahar koi bhi state change nahi hoti hai
+
+// impure function
+// jisme function ka output uske input ke alawa bhi kisi aur cheez par depend karta hai , aur function ke bahar bhi state change hoti hai
+
+// global vs local scope
+
+let globalVar = "I am a global variable"; // global scope
+function scopeExample() {
+  let localVar = "I am a local variable"; // local scope
+  console.log(globalVar); // I am a global variable
+  console.log(localVar); // I am a local variable
+}
+
+console.log(localVar); // Error: localVar is not defined
+
+scopeExample();
+
+//closure
+function outerFunction(outerVariable) {
+  return function innerFunction(innerVariable) {
+    console.log(`Outer Variable: ${outerVariable}`);
+    console.log(`Inner Variable: ${innerVariable}`);
+  };
+}
+const newFunction = outerFunction("outside");
+newFunction("inside");
 
 /////////////////////////  practice  ////////////////////////
 
