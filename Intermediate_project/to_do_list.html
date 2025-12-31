@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        width: 50%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 391px;
+        background: lightslategray;
+        font: 1em sans-serif;
+    }
+
+    input {
+        width: 70%;
+        height: 40px;
+        font-size: 16px;
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+
+    input:focus {
+        outline: none;
+        border: 2px solid dodgerblue;
+    }
+
+    button {
+        height: 42px;
+        font-size: 16px;
+        padding: 5px 20px;
+        margin-left: 10px;
+        cursor: pointer;
+        background-color: dodgerblue;
+        color: white;
+        border: none;
+        border-radius: 4px;
+
+    }
+
+    ul {
+        list-style-type: none;
+        width: 70%;
+        background-color: white;
+        color: black;
+        border-radius: 4px;
+        box-shadow: 0 6px 13px rgba(9, 1, 6, 0.2);
+        padding: 10px;
+    }
+</style>
+
+<body>
+
+    <h1>To-Do List</h1>
+    <input type="text" id="taskInput" placeholder="Enter a new task">
+    <button id="addBtn">Add Task</button>
+
+    <ul id="taskList"></ul>
+
+</body>
+
+<script>
+
+    const inputText = document.getElementById("taskInput");
+    const taskList = document.getElementById("taskList");
+    const addBtn = document.getElementById("addBtn");
+
+    let tasks = []
+
+    addBtn.addEventListener("click", addTask)
+
+    function addTask() {
+
+        if (inputText.value.trim() === "") {
+            return alert("Please enter a task!");
+        }
+
+        tasks.push(inputText.value);
+
+        inputText.value = "";
+
+        renderTasks();
+    }
+
+    function renderTasks() {
+
+        taskList.innerHTML = "";
+
+        if (tasks.length === 0 || tasks == null) {
+            taskList.innerHTML = "<li>No tasks added yet!</li>";
+            return;
+        }
+
+        tasks.forEach((element, index) => {
+
+            const li = document.createElement("li");
+            li.innerText = element;
+
+            // deleted button
+            const delebtn = document.createElement("button");
+            delebtn.innerHTML = "delete"
+            delebtn.style.backgroundColor = "red";
+            delebtn.style.borderRadius = "4px";
+            delebtn.style.marginLeft = "10px";
+            delebtn.style.cursor = "pointer";
+
+            delebtn.addEventListener("click", function () {
+                deleteTask(index);
+            })
+
+
+            li.appendChild(delebtn);
+            taskList.appendChild(li);
+        });
+
+
+    }
+
+    function deleteTask(index) {
+        tasks.splice(index, 1);   // array se remove
+        renderTasks();            // UI update
+    }
+
+
+
+
+</script>
+
+</html>
